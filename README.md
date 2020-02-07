@@ -32,7 +32,8 @@ https://twitchapps.com/tmi/
 公式でわかりやすいものが見つからなかったので、参考のWebページで設定する。  
 BOT PERMISSIONSはチャネルの作成・削除もするため、下記をONにする。
 - Send Messages  
-- Manage Channels
+- Manage Channels  
+- Manage Roles
 
 1. node.jsにtmi.jsモジュールをインストール(※markdownのせいで番号がおかしく、手順の続き)  
 `npm install tmi.js`
@@ -89,7 +90,8 @@ Ctrl+cで強制終了した場合はロギングしているdiscordの#twitch_ch
 # 備考
 配信中を目的としているため、配信が終わるとチャネルごと削除する。  
 (配信終了後はtwitchのアーカイブを見れば配信中のチャットログがわかる。)  
-ログのためpostできないようにしたいが、パーミッションの設定がまだわからず、それは後日。
+ログなので、discordチャネルはサーバオーナとBOT以外はpostさせない。  
+参考に書かれているが、discordの開発サイドではサーバのことをギルドというらしい。
 
 # 参考
 - twitch API  
@@ -102,6 +104,9 @@ https://dev.twitch.tv/docs/irc
 https://gist.github.com/twitchdevelopers/afda75fe0a43453e97e97b25232778de
 https://github.com/tmijs/docs
 https://github.com/tmijs/docs/tree/gh-pages/_posts
+
+- discord developer portal  
+https://discordapp.com/developers/applications/
 
 - discord bot設定  
 https://note.com/bami55/n/ncc3a68652697
