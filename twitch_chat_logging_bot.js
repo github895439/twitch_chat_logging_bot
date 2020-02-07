@@ -71,23 +71,23 @@ function makeDiscordChannel()
                         ()=>
                         {
                             console.log("Ready Discord.");
-                            // channelDiscord.overwritePermissions(guild.id,
-                            //     {
-                            //         SEND_MESSAGES: false
-                            //     })
-                            //     .then(
-                            //         (updated_guild_id)=>
-                            //         {
-                            //             channelDiscord.overwritePermissions(clientDiscord.user.id,
-                            //                 {
-                            //                     SEND_MESSAGES: true
-                            //                 })
-                            //                 .then(
-                            //                     (updated_client_id)=>
-                            //                     {
-                            //                         console.log("Overwrote permission.");
-                            //                     });
-                            //         });
+                            channelDiscord.overwritePermissions(channelDiscord.guild.defaultRole,
+                                {
+                                    SEND_MESSAGES: false
+                                })
+                                .then(
+                                    (updated_guild_id)=>
+                                    {
+                                        channelDiscord.overwritePermissions(clientDiscord.user.id,
+                                            {
+                                                SEND_MESSAGES: true
+                                            })
+                                            .then(
+                                                (updated_client_id)=>
+                                                {
+                                                    console.log("Overwrote permission.");
+                                                });
+                                    });
                         });
             });
     return;
