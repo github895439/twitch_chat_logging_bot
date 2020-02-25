@@ -116,3 +116,8 @@ https://liginc.co.jp/370260
 - discord.js  
 https://discord.js.org/#/
 https://github.com/discordjs/discord.js
+
+# 主な履歴
+2020/02/25  
+　discordチャネルの削除をツール終了時ではなく開始時に変更  
+　　最新アーカイブのコメントをdiscordに残し、アーカイブ内のシーク的な使い方をできるようにするため。

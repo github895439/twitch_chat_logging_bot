@@ -31,7 +31,7 @@ const opts =
     };
 const clientTwitch = new tmi.client(opts);
 const clientDiscord = new Discord.Client();
-const DISCORD_CHANNEL = "#twitch_chat_log";
+const DISCORD_CHANNEL = "twitch_chat_log";
 
 var channelDiscord;
 
@@ -58,7 +58,14 @@ function onMessageHandler(target, context, msg, self)
 function makeDiscordChannel()
 {
     let guild = clientDiscord.guilds.find((val)=>val.name === config.discord.guild);
-    guild.createChannel(DISCORD_CHANNEL,
+    channelDiscord = guild.channels.find((val)=>val.name === DISCORD_CHANNEL);
+
+    if (channelDiscord != null)
+    {
+        removeDiscordChannel();
+    }
+
+    guild.createChannel("#" + DISCORD_CHANNEL,
         {
             type: "text"
         })
@@ -100,9 +107,6 @@ function removeDiscordChannel()
             (channel)=>
             {
                 console.log("Removed Discord channel.");
-                clientDiscord.destroy();
-                console.log("Completed cleanup.");
-                process.exit();
             });
     return;
 }
@@ -142,8 +146,8 @@ process.stdin.on('readable',
                         (reason)=>
                         {
                             console.log("Disconnected Twitch.");
-
-                            removeDiscordChannel();
+                            clientDiscord.destroy();
+                            process.exit();
                         });
             }
         }
